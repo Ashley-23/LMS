@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('formations', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->text('description');
             $table->enum('level',['beginner','intermediate','advanced']);
-            $table->string('duration');
+            $table->string('duration')->nullable();
             $table->timestamps();
         });
     }

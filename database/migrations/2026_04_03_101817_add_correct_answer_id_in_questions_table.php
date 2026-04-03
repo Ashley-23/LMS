@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-use App\Models\Subsection;
+use App\Models\Answer;
 
 return new class extends Migration
 {
@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('educational_contents', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('title');
-            $table->text('text');
-
-            $table->foreignIdFor(Subsection::class);
-            $table->timestamps();
+        Schema::table('questions', function (Blueprint $table) {
+            $table->foreignIdFor(Answer::class)->nullable();
         });
     }
 
@@ -28,6 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('educational_contents');
+        Schema::table('questions', function (Blueprint $table) {
+            //
+        });
     }
 };
