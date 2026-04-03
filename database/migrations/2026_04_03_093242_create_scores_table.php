@@ -18,8 +18,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->float('score');
 
-            $table->foreignId(User::class);
-            $table->foreignId(Quizz::class);
+            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(Quizz::class);
 
             $table->timestamps();
         });

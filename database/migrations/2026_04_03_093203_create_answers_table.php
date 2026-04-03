@@ -17,7 +17,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->text('content');
 
-            $table->foreignId(Question::class);
+            $table->foreignIdFor(Question::class);
             $table->timestamps();
         });
     }
