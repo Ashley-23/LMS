@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LMS</title>
+    <title>{{$title ?? 'LMS'}}</title>
     @include('partials._styles')
 </head>
 <body>
-    @include('partials._preloader')
+    {{-- @include('partials._preloader') --}}
     @include('partials._header')
     @include('partials._right-sidebar')
     @include('partials._left-sidebar')

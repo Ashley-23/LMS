@@ -10,17 +10,17 @@
     </div>
     <div class="menu-block customscroll">
         <div class="sidebar-menu">
-            <ul id="accordion-menu">
+             <ul id="accordion-menu">
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+                        <span class="micon dw dw-house-1"></span><span class="mtext">Formations</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="index.html">Dashboard style 1</a></li>
-                        <li><a href="index2.html">Dashboard style 2</a></li>
+                        <li><a href="{{ route('formations.create') }}">Ajouter</a></li>
+                        <li><a href="{{ route('formations.index') }}">Lister</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
+            {{--    <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-edit2"></span><span class="mtext">Forms</span>
                     </a>
@@ -192,8 +192,8 @@
                         <span class="micon dw dw-paper-plane1"></span>
                         <span class="mtext">Landing Page <img src="vendors/images/coming-soon.png" alt="" width="25"></span>
                     </a>
-                </li>
-            </ul>
+                </li>--}}
+            </ul> 
         </div>
     </div>
 </div>

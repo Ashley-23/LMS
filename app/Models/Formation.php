@@ -5,17 +5,20 @@ namespace App\Models;
 use App\Enums\FormationLevelEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Casts\AsStringable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-#[Fillable(['nom', 'description', 'level', 'duration', 'user_id'])]
+#[Fillable(['name', 'description', 'level', 'duration', 'user_id'])]
 class Formation extends Model
 {
-    use HasUuids; 
+    use HasUuids, HasFactory; 
     
     protected function casts()
     {
         return [
             'level' => FormationLevelEnum::class,
+            'description' => AsStringable::class,
         ];
     }
 
