@@ -16,3 +16,9 @@
 <script src="{{ asset('src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js') }}"></script>
 <script src="{{ asset('vendors/scripts/advanced-components.js') }}"></script> 
 
+<!-- add sweet alert js & css in footer -->
+<script src="{{ asset('src/plugins/sweetalert2/sweetalert2.all.js') }}"></script>
+{{-- <script src="{{ asset('src/plugins/sweetalert2/sweet-alert.init.js') }}"></script> --}}
+
+
+@yield('_scripts')

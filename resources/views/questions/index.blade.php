@@ -1,4 +1,4 @@
-@extends('base', ['title' => 'Liste des formations'])
+@extends('base', ['title' => 'Liste des questions'])
 
 @section('content')
 
@@ -9,37 +9,28 @@
                 <thead>
                     <tr>
                         <th class="table-plus datatable-nosort">Nom</th>
-                        <th>Description</th>
-                        <th>Niveau</th>
-                        <th>Durée</th>
-                        <th>Créé par</th>
-                        <th class="datatable-nosort">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($formations as $formation)
+                    @forelse($questions as $question)
                         <tr>
-                            <td class="table-plus">{{ $formation->name }}</td>
-                            <td>{{ $formation->description->limit(20) }}</td>
-                            <td>{{ $formation->level->displayName() }}</td>
-                            <td>{{ $formation->duration }} {{ Str::plural('heure', $formation->duration) }}</td>
-                            <td>{{ $formation->user?->name ?? 'N/A' }}</td>
+                            <td class="table-plus">{{ $question->name }}</td>
                             <td>
                                 <div class="dropdown">
                                     <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                         <i class="dw dw-more"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                        <a class="dropdown-item" href="{{ route('formations.show', $formation) }}"><i class="dw dw-eye"></i> Voir</a>
-                                        <a class="dropdown-item" href="{{ route('formations.edit', $formation) }}"><i class="dw dw-edit2"></i> Modifier</a>
-                                        <a class="dropdown-item" href="javascript:void(0);" onclick="event.preventDefault(); deleteFormation('{{ route('formations.destroy', $formation) }}');"><i class="dw dw-delete-3"></i> Supprimer</a>
+                                        <a class="dropdown-item" href="{{ route('questions.show', $question) }}"><i class="dw dw-eye"></i> Voir</a>
+                                        <a class="dropdown-item" href="{{ route('questions.edit', $question) }}"><i class="dw dw-edit2"></i> Modifier</a>
+                                        <a class="dropdown-item" href="javascript:void(0);" onclick="event.preventDefault(); deleteQuestion('{{ route('questions.destroy', $question) }}');"><i class="dw dw-delete-3"></i> Supprimer</a>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6">Aucune formation disponible.</td>
+                            <td colspan="6">Aucune question disponible.</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -55,7 +46,7 @@
 
 @section('_scripts')
     <script> 
-        async function deleteFormation(url) {
+        async function deleteQuestion(url) {
                 let form = document.getElementById('delete-form');
                     form.action = url;
                     form.submit();

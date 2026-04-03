@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Models\Answer;
+use App\Models\Quizz;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -12,15 +14,26 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $questions = Question::with(['quizz','answer'])->latest('name')->get();
+        return view('questions.index', compact('questions'));
+    } 
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        // $quizzes = Quizz::all();
+        // $quizzes = Quizz::orderBy('name')->get();
+
+        $quizzes = Quizz::where('user_id', auth()->id())
+                    ->orderBy('name')
+                    ->get();
+
+        return view('questions.create', [
+            'question' => new Question(),
+            'quizzes' => $quizzes,
+        ]);
     }
 
     /**
@@ -36,7 +49,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        return view('questions.show', compact('question')); 
     }
 
     /**

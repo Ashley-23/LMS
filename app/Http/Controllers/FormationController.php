@@ -7,6 +7,7 @@ use App\Http\Requests\FormationRequest;
 use App\Models\Formation;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FormationController extends Controller
 {
@@ -59,6 +60,15 @@ class FormationController extends Controller
 
     public function destroy(Formation $formation)
     {
-        //
+        try {
+            DB::beginTransaction();
+            $formation->chapters()->delete();
+            $formation->delete();
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return to_route('formations.index')->with('error', 'Une erreur est survenue lors de la suppression de la formation.');
+        }
+        return to_route('formations.index')->with('success', 'Formation supprimée avec succès.');
     }
 }

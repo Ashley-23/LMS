@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,6 +25,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('formations', FormationController::class);
     // afficher le formulaire de création de formation
     Route::get('formations/create',[FormationController::class, 'create'])->name('formations.create'); 
+});
+
+Route::middleware('auth')->group(function () {
+    Route::resource('questions', QuestionController::class);
+    // afficher le formulaire de création de formation 
 });
 
 

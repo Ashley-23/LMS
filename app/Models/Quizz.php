@@ -11,6 +11,8 @@ class Quizz extends Model
 {
     use HasUuids;
 
+    protected $table = 'quizzes';
+
     public function subsection()
     {
         return $this->belongsTo(Subsection::class);
