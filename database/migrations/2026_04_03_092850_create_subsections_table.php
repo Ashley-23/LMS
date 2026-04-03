@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('content')->nullable();
 
-            $table->foreignIdFor(Chapter::Class);
+            $table->foreignIdFor(Chapter::class);
             $table->timestamps();
         });
     }

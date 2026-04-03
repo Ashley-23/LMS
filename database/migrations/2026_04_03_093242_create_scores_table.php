@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 use App\Models\User;
-use App\Models\Formation;
+use App\Models\Quizz;
 
 return new class extends Migration
 {
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->float('score');
 
             $table->foreignId(User::class);
-            $table->foreignId(Formation::class);
+            $table->foreignId(Quizz::class);
 
             $table->timestamps();
         });
