@@ -13,6 +13,10 @@ class QuizzSeeder extends Seeder
      */
     public function run(): void
     {
-        Quizz::factory()->count(10)->create();
+        Quizz::factory()->count(10)->create()->each(function ($quizz) {
+            // Create 5 questions for each quizz
+            $questions = \Database\Factories\QuestionFactory::new()->count(5)->make();
+            $quizz->questions()->saveMany($questions);
+        });
     }
 }

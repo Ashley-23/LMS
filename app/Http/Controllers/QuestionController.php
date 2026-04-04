@@ -14,7 +14,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::with(['quizz','answer'])->latest('name')->get();
+        $questions = Question::with(['quizz','answer'])->latest('content')->get();
         return view('questions.index', compact('questions'));
     } 
 
@@ -24,10 +24,10 @@ class QuestionController extends Controller
     public function create()
     {
         // $quizzes = Quizz::all();
-        // $quizzes = Quizz::orderBy('name')->get();
+        // $quizzes = Quizz::orderBy('content')->get();
 
         $quizzes = Quizz::where('user_id', auth()->id())
-                    ->orderBy('name')
+                    ->orderBy('quizzes.name')
                     ->get();
 
         return view('questions.create', [
@@ -68,11 +68,15 @@ class QuestionController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Question $question)
     {
-        //
+        try {
+            $question->answers()->delete();
+            $question->delete();
+        } catch (\Exception $e) {
+            return redirect()->route('questions.index')->with('error', 'Impossible de supprimer la question. Veuillez réessayer plus tard.');
+        }
+
+        return redirect()->route('questions.index')->with('success', 'Question supprimée.');
     }
 }

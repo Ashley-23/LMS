@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('nom');
+            $table->string('name');
 
             $table->foreignIdFor(Subsection::class);
         });

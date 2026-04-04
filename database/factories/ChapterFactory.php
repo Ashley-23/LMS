@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Quizz;
-use App\Models\Subsection;
+use App\Models\Chapter;
+use App\Models\Formation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Quizz>
+ * @extends Factory<Chapter>
  */
-class QuizzFactory extends Factory
+class ChapterFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,7 +20,7 @@ class QuizzFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence(),
-            'subsection_id' => Subsection::factory(),
+            'formation_id' => Formation::factory(),
         ];
     }
 }

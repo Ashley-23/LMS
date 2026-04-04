@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Quizz;
-use App\Models\Subsection;
+use App\Models\Answer;
+use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Quizz>
+ * @extends Factory<Answer>
  */
-class QuizzFactory extends Factory
+class AnswerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +19,8 @@ class QuizzFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->sentence(),
-            'subsection_id' => Subsection::factory(),
+            'content' => $this->faker->sentence(),
+            'question_id' => Question::factory(),
         ];
     }
 }

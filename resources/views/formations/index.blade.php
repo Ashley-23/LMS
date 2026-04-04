@@ -32,7 +32,7 @@
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                                         <a class="dropdown-item" href="{{ route('formations.show', $formation) }}"><i class="dw dw-eye"></i> Voir</a>
                                         <a class="dropdown-item" href="{{ route('formations.edit', $formation) }}"><i class="dw dw-edit2"></i> Modifier</a>
-                                        <a class="dropdown-item" href="javascript:void(0);" onclick="event.preventDefault(); deleteFormation('{{ route('formations.destroy', $formation) }}');"><i class="dw dw-delete-3"></i> Supprimer</a>
+                                        <a class="dropdown-item" href="javascript:void(0);" onclick="event.preventDefault(); showDeleteModal('{{ route('formations.destroy', $formation) }}');"><i class="dw dw-delete-3"></i> Supprimer</a>
                                     </div>
                                 </div>
                             </td>
@@ -46,37 +46,5 @@
             </table>
         </div>
     </div>
-<form id="delete-form">
-    @csrf
-    @method('DELETE')
-</form>
+    @include('partials._delete-form')
 @endsection
-
-
-@section('_scripts')
-    <script> 
-        async function deleteFormation(url) {
-                let form = document.getElementById('delete-form');
-                    form.action = url;
-                    form.submit();
-                    console.log('test::', form);
-            await swal({ 
-                title: 'Êtes-vous sûr?',
-                text: "Vous ne pourrez pas annuler ceci!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Oui, supprimer!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    let form = document.getElementById('delete-form');
-                    form.action = url;
-                    form.submit();
-                    console.log('test::', form);
-                }
-            });
-        }
-    </script> 
-@endsection
-

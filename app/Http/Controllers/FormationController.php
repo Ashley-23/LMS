@@ -38,7 +38,7 @@ class FormationController extends Controller
 
     public function show(Formation $formation)
     {
-        //
+        return view('formations.show', compact('formation'));
     }
 
     public function edit(Formation $formation)

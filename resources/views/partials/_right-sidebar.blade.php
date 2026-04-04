@@ -30,6 +30,15 @@
                     </ul>
                 </li>
                   
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-edit2"></span><span class="mtext">Quizz</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('quizzes.create') }}">Ajouter</a></li>
+                        <li><a href="{{ route('quizzes.index') }}">Lister</a></li>
+                    </ul>
+                </li>
 
               {{--   <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
