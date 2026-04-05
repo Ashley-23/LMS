@@ -21,6 +21,7 @@ class ChapterFactory extends Factory
         return [
             'name' => $this->faker->sentence(),
             'formation_id' => Formation::factory(),
+            'order_number' => 0,
         ];
     }
 }
