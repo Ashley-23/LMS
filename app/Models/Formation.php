@@ -19,6 +19,7 @@ class Formation extends Model
         return [
             'level' => FormationLevelEnum::class,
             'description' => AsStringable::class,
+            'name' => AsStringable::class,
         ];
     }
 
@@ -29,6 +30,6 @@ class Formation extends Model
 
     public function chapters()
     {
-        return $this->hasMany(Chapter::class);
+        return $this->hasMany(Chapter::class)->orderBy('order_number');
     }
 }
