@@ -9,9 +9,9 @@
         @error('name')
             <span class="text-danger">{{ $errors->first('name') }}</span>
         @enderror
-        
+
     </div>
-    
+
     <div class="form-group">
         <label>Description</label>
         <textarea class="form-control" placeholder="Description de la formation" id="description" name="description">{{ $formation->description }}</textarea>
@@ -41,6 +41,6 @@
         @enderror
     </div>
 
-        
-    <input type="submit" value="Ajouter la formation" class="btn btn-primary">
+
+    <input type="submit" value="{{(isset($isUpdate) && $isUpdate) ? 'Modifier' : 'Ajouter'}} la formation" class="btn btn-primary">
 </form>
