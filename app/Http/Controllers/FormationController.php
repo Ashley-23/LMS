@@ -43,6 +43,8 @@ class FormationController extends Controller
 			'chapters' => fn ($query) => $query->orderBy('name'),
 		]);
 
+		// $learners = User::with('user')->latest('name')->get();
+
 		return view('formations.show', compact('formation'));
 	}
 

@@ -34,6 +34,13 @@
 							Chapitres ( {{ $formation->chapters->count() }} )
 						</a>
 					</li>
+					{{-- <li class="nav-item">
+						<a class="nav-link {{ $isActive('learners-tab') }}" id="learners-tab" data-toggle="tab" href="#apprenants"
+						   role="tab"
+						   aria-controls="apprenants" aria-selected="false">
+							Apprenants ( {{ $formation->learners->count() }} )
+						</a>
+					</li> --}}
 				</ul>
 			</div>
 
@@ -41,6 +48,7 @@
 				<div class="tab-content">
 					@include('formations._details-tab')
 					@include('formations._chapters-tab')
+					{{-- @include('formations._learners-tab') --}}
 				</div>
 			</div>
 		</div>
